@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root answer="yes">
+  <element wait="a moment">
+    <hey>Wath?!</hey>
+  </element>
+  <div class="div-1">
+    DIV.
+  </div>
+  <element title="Title Str">
+    Who?
+    <tagToRemove>
+      Hey :)
+    </tagToRemove>
+  </element>
+</root>
