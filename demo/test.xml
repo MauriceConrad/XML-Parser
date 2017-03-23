@@ -3,7 +3,7 @@
   <element wait="a moment">
     <hey>Wath?!</hey>
   </element>
-  <div class="div-1">
+  <div class="class-1 class-2">
     DIV.
   </div>
   <element title="Title Str">

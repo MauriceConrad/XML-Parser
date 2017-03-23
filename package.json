@@ -1,6 +1,6 @@
 {
 	"name": "xml-parse",
-	"version": "0.1",
+	"version": "0.1.2",
 	"description": "XML DOM, Parser & Stringifier",
 	"keywords": [
 		"xml",
@@ -8,7 +8,12 @@
 		"xml dom",
 		"xml stringify",
 		"xml parse",
-		"xml stringifier"
+		"xml stringifier",
+		"dom",
+		"html",
+		"html parser",
+		"html parsing",
+		"xml parsing"
 	],
 	"license": "ISC",
 	"author": "Maurice Conrad",
