@@ -1,6 +1,6 @@
 {
 	"name": "xml-parse",
-	"version": "0.1.2",
+	"version": "0.3.0",
 	"description": "XML DOM, Parser & Stringifier",
 	"keywords": [
 		"xml",

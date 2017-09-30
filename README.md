@@ -2,7 +2,7 @@
 
 Parse XML, HTML and more with a very tolerant XML parser and convert it into a DOM.
 
-These three components are separated from each other as won modules.
+These three components are separated from each other as own modules.
 
 |Component|Size|
 |---|---|
@@ -43,9 +43,9 @@ console.log(parsedInavlidXML);
 
 ### Parsed Object Structure
 
-The result of ```parse``` is JavaScript object that maybe looks like this:
+The result of ```parse``` is an object that maybe looks like this:
 
-(In this case we have the xml string of the valid xml example)
+(In this case we have the xml string of the given example)
 ```javascript
 [
   {
@@ -80,9 +80,9 @@ The result of ```parse``` is JavaScript object that maybe looks like this:
 
 #### Object Nodes
 
-There two kinds of objects. *element* and *text*.
-A object has always the key ```type```.
-The other keys depends from this *type*.
+There are two kinds of objects. *element* and *text*.
+An object has always the property ```type```.
+The other keys depend from this *type*.
 
 ##### 'Element' Object Node
 
@@ -90,11 +90,11 @@ The other keys depends from this *type*.
 {
   type: [String], // "element"
   tagName: [String], // The tag name of the tag
-  attributes: [Object], // Object containing attributes as keys
+  attributes: [Object], // Object containing attributes as properties
   childNodes: [Array], // Array containing child nodes as object nodes ("element" or "text")
   innerXML: [String], // The inner XML of the tag
   closing: [Boolean], // If the tag is closed typically (</tagName>)
-  closingChar: [String] || null // If it's not closed typically, the char that closes it ("!" or "?")
+  closingChar: [String] || null // If it is not closed typically, the char that is used to close it ("!" or "?")
 }
 ```
 
@@ -150,22 +150,22 @@ console.log(xmlStr);
 
 ## DOM
 
-The ```DOM``` method of the *xml-parser* instance returns a Document Object Model with some methods.
-It's orientated by the DOM of W3 but in this case it's not so complex.
+The ```DOM``` method of *xml-parser* instance returns a Document-Object-Model with a few methods.
+It is oriented on the official W3 DOM but not complex as the original.
 
 ```javascript
 const xml = require("xml-parse");
 
 var xmlDoc = new xml.DOM(xml.parse('<?xml version="1.0" encoding="UTF-8"?>' +
-                                     '<root>Root Element</root>')); // Can also be file path.
+                                     '<root>Root Element</root>')); // Can also be a file path.
 
-dom.document; // Document Object. (Root)
+xmlDoc.document; // Document Object. (Root)
 ```
 
 ### 'Element' Object Node
 
 ```javascript
-// A element (e.g the 'document' object) has the following prototype methods and keys:
+// An element (e.g the 'document' object) has the following prototype methods and properties:
 
 var objectNode = document.childNodes[1]; // Just an example
 
@@ -191,9 +191,9 @@ objectNode = {
 
 ### Handling with child nodes
 
-With ```appendChild``` or ```insertBefore``` methods of every object node you can append a child node. You don't have to do something like ```createElement```.
+With ```appendChild``` or ```insertBefore``` methods of every object node, you are allowed to append a child node. You do not have to do something like ```createElement```.
 
-Because a child node is just a object node, with some properties like ```type```, ```tagName```, ```attributes```and more you just have to pass such an object to the function.
+Because a child node is just an object literal, with some properties like ```type```, ```tagName```, ```attributes```and more you just have to pass such an object to the function.
 
 #### appendChild
 
@@ -226,7 +226,7 @@ root.appendChild({
 #### insertBefore
 
 ```javascript
-element.insertBefore(childNode, elementAfter); // ChildNode is just a object node, elementAfter is just a child node of the parent 'element'
+element.insertBefore(childNode, elementAfter); // ChildNode is just an object literal, 'elementAfter' is just a child node of the parent element
 ```
 
 ##### Example
@@ -254,7 +254,7 @@ root.insertBefore({
 #### removeChild
 
 ```javascript
-element.removeChild(childNode); // ChildNode is juts a childNode of the parent 'element'
+element.removeChild(childNode); // 'childNode' is just a children of the parent element ('element')
 ```
 
 ##### Example
@@ -273,7 +273,7 @@ root.removeChild(root.childNodes[0]);
 
 ### parentNode
 
-The ```parentNode``` of a object node represents the parent element. It's ```[Circular]``` reference in javascript's object structure.
+The ```parentNode``` of a object node represents its parent element. It's a ```[Circular]``` reference.
 
 ```javascript
 const xml = require('xml-parse');
