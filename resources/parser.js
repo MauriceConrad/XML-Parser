@@ -11,10 +11,11 @@ function parseTagInner(inner, index) {
   var inners = [];
   var currIndex = 0;
   while (getTag(currIndex, inner) != null) {
+
     var tag = getTag(currIndex, inner);
     if (typeof tag == "string") {
       var tag = checkExclamationTag(/<!\[CDATA\[/, /\]\]>/, tag, inner);
-      inners.push(getTextNode(tag, index));
+      inners.push(getTextNode(tag, index, currIndex));
       currIndex = currIndex + tag.length;
     }
     else if (typeof tag == "object") {
@@ -43,14 +44,20 @@ function getElement(tag, index) {
     childNodes: parseTagInner(tag.inner, index),
     innerXML: tag.inner,
     closing: tag.closing,
-    closingChar: tag.closingChar || null
+    closingChar: tag.closingChar || null,
+    range: {
+      start: tag.begin.start,
+      end: tag.begin.end,
+      original: tag.begin.inner,
+    },
   }
 }
-function getTextNode(tag, index) {
+function getTextNode(tag, index, currIndex) {
   return {
     type: "text",
     text: tag,
-    index: index
+    index: index,
+    start: currIndex,
   }
 }
 function getAttributes(begin) {
