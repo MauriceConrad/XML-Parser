@@ -45,11 +45,8 @@ function getElement(tag, index) {
     innerXML: tag.inner,
     closing: tag.closing,
     closingChar: tag.closingChar || null,
-    range: {
-      start: tag.begin.start,
-      end: tag.begin.end,
-      original: tag.begin.inner,
-    },
+    start: tag.begin,
+    end: tag.end,
   }
 }
 function getTextNode(tag, index, currIndex) {
